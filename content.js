@@ -3,7 +3,7 @@
     "firstName": "John",
     "lastName": "Doe",
     "email": "john.doe@example.com",
-    "phoneNumber": "555-123-4567",
+    "phoneNumber": "5551234567",
     "howDidYouHear": "LinkedIn",
     "disabilityStatus": "No",
     "veteranStatus": "I am not a protected veteran",
@@ -31,7 +31,6 @@
       nativeInputValueSetter.call(element, value);
       element.dispatchEvent(new Event('input', { bubbles: true }));
       element.dispatchEvent(new Event('change', { bubbles: true }));
-      element.dispatchEvent(new Event('blur', { bubbles: true }));
     }
   }
 
@@ -42,6 +41,8 @@
       setRval(selector, text);
       setTimeout(() => {
         input.dispatchEvent(new KeyboardEvent('keydown', { bubbles: true, key: 'Enter', code: 'Enter', keyCode: 13 }));
+        input.dispatchEvent(new KeyboardEvent('keydown', { bubbles: true, key: 'Escape', code: 'Escape', keyCode: 27 }));
+        input.blur();
       }, 400);
     }
   }
