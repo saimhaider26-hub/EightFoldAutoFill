@@ -23,7 +23,6 @@
     "resumeUrl": "https://example.com/resume.pdf",
     "coverLetterUrl": "https://example.com/coverletter.pdf"
   };
-
   function setRval(selector, value) {
     const element = document.querySelector(selector);
     if (element) {
@@ -33,11 +32,11 @@
       element.dispatchEvent(new Event('change', { bubbles: true }));
     }
   }
-
   function enter(selector, text) {
     const input = document.querySelector(selector);
     if (input) {
-      input.focus();
+      // THE FIX: Prevents the page from auto-jumping to the bottom
+      input.focus({ preventScroll: true }); 
       setRval(selector, text);
       setTimeout(() => {
         input.dispatchEvent(new KeyboardEvent('keydown', { bubbles: true, key: 'Enter', code: 'Enter', keyCode: 13 }));
@@ -46,7 +45,6 @@
       }, 400);
     }
   }
-
   async function fileuploads(buttonAriaLabel, url, fileName) {
     const button = document.querySelector(`button[aria-label="${buttonAriaLabel}"]`);
     if (!button) return;
