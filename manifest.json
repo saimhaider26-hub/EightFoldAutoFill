@@ -2,18 +2,15 @@
   "manifest_version": 3,
   "name": "Eightfold Autofill",
   "version": "1.0",
-  "description": "Autofills the Eightfold AI job application.",
-  "permissions": ["activeTab", "scripting"],
+  "permissions": [
+    "activeTab",
+    "scripting",
+    "tabs"
+  ],
   "action": {
-    "default_title": "Autofill Application"
+    "default_title": "Autofill Form"
   },
   "background": {
     "service_worker": "background.js"
-  },
-  "content_scripts": [
-    {
-      "matches": ["https://*.eightfold.ai/*"],
-      "js": ["content.js"]
-    }
-  ]
+  }
 }
